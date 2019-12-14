@@ -1,11 +1,14 @@
 #include <iostream>
 #include <fstream>
+#include <time.h>
 #include "../include/board.h"
 #include "../include/player.h"
 #include "../include/rules.h"
 #include "../include/algorithm.h"
 
 using namespace std;
+
+//#define debug
 
 
 // ver 0-0 upload the whole framework
@@ -27,6 +30,7 @@ int main(){
     result.open("result.txt");
     cin >> exc_t;
     b_win = r_win = 0;
+    srand(time(NULL));
     for(int i = 0; i < exc_t; ++i) {
         first_two_step = true;
         round = 1;
@@ -40,11 +44,13 @@ int main(){
 
             if(rules_violation(red_player)) return 0;
 
-            board.print_current_board(index[0], index[1], round);
+            #ifdef debug
+                board.print_current_board(index[0], index[1], round);
+            #endif
             round++;
 
             if(board.win_the_game(red_player) && !first_two_step){
-                cout << "Red Player won the game !!!" << endl;
+                cout << "Red Player won the game in round " << round << "!!!" << endl;
                 r_win++;
                 break;
             }
@@ -54,12 +60,14 @@ int main(){
             board.place_orb(index[0], index[1], &blue_player);
 
             if(rules_violation(blue_player)) return 0;
-        
-            board.print_current_board(index[0], index[1], round);
+
+            #ifdef debug
+                board.print_current_board(index[0], index[1], round);
+            #endif
             round++;
 
             if(board.win_the_game(blue_player) && !first_two_step){
-                cout << "Blue Player won the game !!!" << endl;
+                cout << "Blue Player won the game in round " << round << "!!!" << endl;
                 b_win++;
                 break;
             }
