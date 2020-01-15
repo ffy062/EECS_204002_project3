@@ -1,6 +1,9 @@
 #include <iostream>
 #include "../include/board.h"
 #include "../include/rules.h"
+//#include "board.h"
+//#include "rules.h"
+
 
 using namespace std;
 
@@ -68,7 +71,7 @@ void Board::print_current_board(int i, int j, int round){
     char symbol;
 
     ////// Print out the current state of the board //////
-    system(CLEAR);
+    system("clear");
     cout << "Round: " << round << endl;
     cout << "Place orb on (" << i << ", " << j << ")" << endl;
     cout << "=========================================" << endl;
@@ -128,7 +131,7 @@ bool Board::place_orb(int i, int j, Player * player){
         cell_reaction_marker();
         cell_chain_reaction(*player);
     }
-
+ 
     return true;
 }
 

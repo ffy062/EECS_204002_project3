@@ -5,6 +5,11 @@
 #include "../include/player.h"
 #include "../include/rules.h"
 #include "../include/algorithm.h"
+//#include "board.h"
+//#include "player.h"
+//#include "rules.h"
+//#include "algorithm.h"
+
 
 using namespace std;
 
@@ -18,8 +23,8 @@ using namespace std;
 int main(){
 
     Board board;
-    Player red_player(RED);
-    Player blue_player(BLUE);
+    Player red_player('r');
+    Player blue_player('b');
 
     bool first_two_step = true;
     int round;
@@ -56,7 +61,7 @@ int main(){
             }
 
             //////////// Blue Player operations ////////////
-            algorithm_B(board, blue_player, index);
+            algorithm_E(board, blue_player, index);
             board.place_orb(index[0], index[1], &blue_player);
 
             if(rules_violation(blue_player)) return 0;
@@ -80,3 +85,5 @@ int main(){
     result.close();
     return 0;
 } 
+
+

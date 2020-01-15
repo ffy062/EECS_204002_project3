@@ -1,0 +1,3 @@
+Total rounds:
+Red wins: 100
+Blue wins: 0
